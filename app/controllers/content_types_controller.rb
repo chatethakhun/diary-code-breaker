@@ -41,7 +41,7 @@ class ContentTypesController < ApplicationController
   # DELETE /content_types/1
   def destroy
     @content_type.destroy
-    redirect_to content_type_path(@content_type), notice: 'Content type was successfully destroyed.'
+    redirect_to content_types_path, notice: 'Content type was successfully destroyed.'
   end
 
   private

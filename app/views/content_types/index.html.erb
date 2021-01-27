@@ -1,28 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>Content Types</h1>
+  <br />
+  <div class="row">
+    <div class="col-6">
+      <h2 class="m-0 d-inline">
+        Menu
+      </h2>
+    </div>
+    <div class="col-6 text-end">
+      <%= link_to "+ Menu", new_content_type_path , class: 'btn btn-primary' %>
+    </div>
+    <br/>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+  <br />
 
-  <tbody>
-    <% @content_types.each do |content_type| %>
-      <tr>
-        <td><%= content_type.name %></td>
-        <td><%= link_to 'Show', content_type %></td>
-        <td><%= link_to 'Edit', edit_content_type_path(content_type) %></td>
-        <td><%= link_to 'Destroy', content_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Create content', new_content_type_content_path(content_type) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="bg-container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <%- if @content_types.empty? %>
 
-<br>
+            <div class="text-center">
+              <span class="text-muted">
+                No menu found.
+              </span>
+            </div>
 
-<%= link_to 'New Content Type', new_content_type_path %>
+          <%- else %>
+
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Fields</th>
+                  <th class="text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%- @content_types.each do |content_type| %>
+                  <tr>
+                    <td>
+                      <%= content_type.name %>
+                    </td>
+                    <td>
+                      <%= content_type.content_fields.map{ |field| "#{field['field_name']}(#{field['field_type']})" }.join(", ") %>
+                    </td>
+                    <td class="text-end">
+                      <%= link_to 'Edit', edit_content_type_path(content_type), class: 'btn btn-secondary' %>
+                      <%= link_to 'Delete', content_type_path(content_type), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?'} %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
