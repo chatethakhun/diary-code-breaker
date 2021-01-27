@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
     <title>App</title>
     <%= csrf_meta_tags %>
@@ -12,7 +13,46 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+    body {
+      font-family: 'Yusei Magic', sans-serif;
+    }
+
+
+    a:hover {
+      background-color: transparent ;
+    }
+
+      .landing-page {
+        background-image: url("https://picsum.photos/2046/1440");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: calc( 100vh - 56px);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+
+      .landing-page .wrapper {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.6;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0px 100px;
+      }
+  </style>
+
+
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
   </body>
 </html>
