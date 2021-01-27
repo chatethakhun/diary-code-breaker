@@ -7,7 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-// require("@nathanvda/cocoon")
+
+import '../stylesheets/application'
 
 $(document).on('click', 'form .remove_fields', function (event) {
   $(this).prev('input[type=hidden]').val('1')

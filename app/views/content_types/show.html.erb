@@ -1,9 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col-6">
+      <h2 class="m-0 d-inline"><%= "#{@content_type.name}" %></h2>
+      <span class="text-muted">
+        <%= "( #{pluralize(@content_type.contents.length, @content_type.name.downcase)} ) " %>
+      </span>
+    </div>
+    <div class="col-6 text-end">
+      <%= link_to "+ #{@content_type.name}", new_content_type_content_path(@content_type) , class: 'btn btn-primary' %>
+    </div>
+    <br/>
 
-<p>
-  <strong>Name:</strong>
-  <%= @content_type.name %>
-</p>
+  </div>
+  <br/>
+  <div class="bg-container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <%- @content_type.contents[0].properties.each do |name, value| %>
+                  <th><%= name.humanize %></th>
+                <% end %>
+                <th class="text-end">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- @content_type.contents.each do |content| %>
+                <tr>
+                  <%- content.properties.each do |name, value| %>
+                    <td><%= value %></td>
+                  <% end %>
+                  <td class="text-end">
+                    <%= link_to 'Edit', edit_content_type_content_path(@content_type, content), class: 'btn btn-secondary' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_content_type_path(@content_type) %> |
-<%= link_to 'Back', content_types_path %>
+</div>
+

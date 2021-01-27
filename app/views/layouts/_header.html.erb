@@ -9,7 +9,7 @@
 
         <%- ContentType.all.each do |menu| %>
           <li class="nav-item">
-            <%= link_to menu.name, '#', class: "nav-link" %>
+            <%= link_to menu.name, content_type_path(menu), class: "nav-link" %>
           </li>
 
         <% end %>
