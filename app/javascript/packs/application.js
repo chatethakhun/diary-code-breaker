@@ -7,6 +7,21 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+// require("@nathanvda/cocoon")
+
+$(document).on('click', 'form .remove_fields', function (event) {
+  $(this).prev('input[type=hidden]').val('1')
+  $(this).closest('.nested-fields').hide()
+  event.preventDefault()
+})
+
+$(document).on('click', 'form .add_fields', function (event) {
+  time = new Date().getTime()
+  regexp = new RegExp($(this).data('id'), 'g')
+  $(this).before($(this).data('fields').replace(regexp, time))
+  event.preventDefault()
+})
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

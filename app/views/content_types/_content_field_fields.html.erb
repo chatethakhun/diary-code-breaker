@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <%= f.input :field_type, collection: [['Text','text_field'], ['Checkbox', 'check_box'], ['Number', 'number_field']] %>
+  <%= f.input :field_name %>
+  <%= f.input :placeholder %>
+  <%= f.check_box :require %>
+  <%= f.label :require %>
+  <%= f.input :_destroy, as: :hidden, wrapper: false %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</div>
