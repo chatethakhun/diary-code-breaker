@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @content.content_type_id %>
+  <br />
+  <%- @content.properties.each do |name, value| %>
+    <%= name.humanize %>:
+    <%= value %>
+    <br />
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_content_type_content_path(@content.content_type, @content) %> |
+<%= link_to 'Back', content_types_path %>

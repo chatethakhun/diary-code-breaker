@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_061140) do
+ActiveRecord::Schema.define(version: 2021_01_27_082058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,5 +32,14 @@ ActiveRecord::Schema.define(version: 2021_01_27_061140) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "contents", force: :cascade do |t|
+    t.bigint "content_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "properties"
+    t.index ["content_type_id"], name: "index_contents_on_content_type_id"
+  end
+
   add_foreign_key "content_fields", "content_types"
+  add_foreign_key "contents", "content_types"
 end

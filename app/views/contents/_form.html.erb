@@ -1,0 +1,20 @@
+
+<%= simple_form_for(@content, url: @url_path, method: @method) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :content_type_id, as: :hidden %>
+
+  <%= f.simple_fields_for :properties, OpenStruct.new(@content.properties) do |builder| %>
+    <%- @content.content_type.content_fields.each do |field| %>
+      <%= render "contents/content_fields/#{field.field_type}", f: builder, field: field %>
+    <% end %>
+  <% end %>
+  <div class="form-inputs">
+    <%= f.association :content_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
