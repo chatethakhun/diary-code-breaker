@@ -44,6 +44,7 @@
                     <% end %>
                     <td class="text-end">
                       <%= link_to 'Edit', edit_content_type_content_path(@content_type, content), class: 'btn btn-secondary' %>
+                      <%= link_to 'Remove', content_type_content_path(@content_type, content), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?'} %>
                     </td>
                   </tr>
                 <% end %>

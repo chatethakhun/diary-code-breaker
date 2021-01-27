@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
-  before_action :set_content_type, only: [:new]
+  before_action :set_content_type, only: [:new, :destroy]
   # GET /contents
   def index
     @contents = Content.all
@@ -46,7 +46,7 @@ class ContentsController < ApplicationController
   # DELETE /contents/1
   def destroy
     @content.destroy
-    redirect_to contents_url, notice: 'Content was successfully destroyed.'
+    redirect_to content_type_path(@content_type), notice: 'Content was successfully destroyed.'
   end
 
   private
