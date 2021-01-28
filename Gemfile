@@ -20,6 +20,8 @@ gem 'turbolinks', '~> 5'
 gem 'simple_form'
 
 gem "cocoon"
+
+gem 'devise'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

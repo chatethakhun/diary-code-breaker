@@ -5,16 +5,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
+
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-        <%- ContentType.all.each do |menu| %>
-          <li class="nav-item">
-            <%= link_to menu.name, content_type_path(menu), class: "nav-link" %>
-          </li>
-
+        <%- if user_signed_in? %>
+          <%- ContentType.my_contents(current_user).each do |menu| %>
+            <li class="nav-item">
+              <%= link_to menu.name, content_type_path(menu), class: "nav-link" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
-      <%= link_to 'Manage Menu', content_types_path, class: 'btn btn-outline-secondary'  %>
+
+      <%- if user_signed_in? %>
+        <div class="gx-3 gy-3">
+          <%= link_to 'Manage Menu', content_types_path, class: 'btn btn-outline-secondary'  %>
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'  %>
+        </div>
+      <%- else %>
+        <%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-secondary'  %>
+      <% end %>
     </div>
   </div>
 </nav>

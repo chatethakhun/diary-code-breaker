@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_content, only: [:show, :edit, :update, :destroy]
   before_action :set_content_type, only: [:new, :destroy]
   # GET /contents

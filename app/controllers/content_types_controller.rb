@@ -1,5 +1,6 @@
 class ContentTypesController < ApplicationController
-  before_action :set_content_type, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action  :set_content_type, only: [:show, :edit, :update, :destroy]
 
   # GET /content_types
   def index
@@ -23,6 +24,8 @@ class ContentTypesController < ApplicationController
   # POST /content_types
   def create
     @content_type = ContentType.new(content_type_params)
+    @content_type.user_id = current_user.id
+
     if @content_type.save
       redirect_to @content_type, notice: 'Content type was successfully created.'
     else
