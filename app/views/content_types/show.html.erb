@@ -30,7 +30,7 @@
             <table class="table table-borderless">
               <thead>
                 <tr>
-                  <%- @content_type.contents[0].properties.each do |name, value| %>
+                  <%- @content_type.contents.last.properties.each do |name, value| %>
                     <th><%= name.humanize %></th>
                   <% end %>
                   <th class="text-end">Action</th>
