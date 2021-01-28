@@ -1,5 +1,7 @@
 class ContentType < ApplicationRecord
 
+  validates :name, presence: true
+
   has_many :content_fields, dependent: :destroy
   has_many :contents, dependent: :destroy
 

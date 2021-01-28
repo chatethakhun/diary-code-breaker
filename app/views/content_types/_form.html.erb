@@ -1,17 +1,5 @@
 <div class="bg-container">
   <%= simple_form_for @content_type do |form| %>
-    <% if content_type.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(content_type.errors.count, "error") %> prohibited this content_type from being saved:</h2>
-
-        <ul>
-          <% content_type.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <%= form.input :name, placeholder: 'Name of menu' %>
 
     <br />
