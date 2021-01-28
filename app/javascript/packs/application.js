@@ -12,7 +12,6 @@ import '../stylesheets/application'
 
 $(document).on('click', 'form .remove_fields', function (event) {
   $(this).prev('input[type=hidden]').val('1')
-
   $(this).closest('.nested-fields').hide()
   event.preventDefault()
 })
@@ -22,8 +21,7 @@ $(document).on('click', 'form .add_fields', function (event) {
   var regexp = new RegExp($(this).data('id'), 'g')
 
   var nested_fields = $(this).data('fields').replace(regexp, time)
-
-  $('form #fields').append(nested_fields)
+  $('form .fields').append(nested_fields)
 
   event.preventDefault()
 })
