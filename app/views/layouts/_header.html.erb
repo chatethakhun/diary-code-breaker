@@ -22,7 +22,10 @@
           <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'  %>
         </div>
       <%- else %>
-        <%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-secondary'  %>
+        <div class="gx-3 gy-3">
+          <%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-secondary'  %>
+          <%= link_to 'Register', new_user_registration_path, class: 'btn btn-outline-secondary'  %>
+        </div>
       <% end %>
     </div>
   </div>
