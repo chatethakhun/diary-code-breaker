@@ -1,4 +1,5 @@
 class Content < ApplicationRecord
+  include ApplicationHelper
   belongs_to :content_type
 
   serialize :properties, Hash
@@ -7,7 +8,7 @@ class Content < ApplicationRecord
 
   def validate_properties
     content_type.content_fields.each do |field|
-      if field.require? && properties[field.field_name].blank?
+      if field.require? && properties[convert_to_snake_case(field.field_name)].blank?
         errors.add field.field_name, "must not be blank"
       end
     end
