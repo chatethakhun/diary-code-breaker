@@ -30,7 +30,7 @@ class ContentsController < ApplicationController
     if @content.save
       redirect_to content_type_content_path(@content.content_type, @content), notice: 'Content was successfully created.'
     else
-      render :new
+      render :new, locals: { "@url_path": content_type_contents_path(params[:content_type_id])}
     end
   end
 
@@ -39,7 +39,7 @@ class ContentsController < ApplicationController
     if @content.update(content_params)
       redirect_to content_type_content_path(@content.content_type, @content), notice: 'Content was successfully updated.'
     else
-      render :edit
+      render :edit, locals: { "@url_path": content_type_contents_path(params[:content_type_id])}
     end
   end
 
