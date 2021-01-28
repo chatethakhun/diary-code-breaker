@@ -1,36 +1,39 @@
-<%= simple_form_for @content_type do |form| %>
-  <% if content_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(content_type.errors.count, "error") %> prohibited this content_type from being saved:</h2>
+<div class="bg-container">
+  <%= simple_form_for @content_type do |form| %>
+    <% if content_type.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(content_type.errors.count, "error") %> prohibited this content_type from being saved:</h2>
 
-      <ul>
-        <% content_type.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% content_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.input :name, placeholder: 'Name of menu' %>
+
+    <br />
+    <hr />
+
+    <div class="d-flex justify-content-between">
+      <h5>
+        Fields
+      </h5>
+      <%= link_to_add_fields "+ Field", form, :content_fields %>
+    </div>
+
+    <%= form.simple_fields_for :content_fields do |f| %>
+      <%= render 'content_types/content_field_fields', f: f %>
+    <% end %>
+
+    <div class="fields"></div>
+
+    <div class="actions d-grid gap-2 col-6 mx-auto">
+      <br />
+      <%= form.submit class: 'btn btn-primary btn-block' %>
     </div>
   <% end %>
+</div>
 
-  <%= form.input :name, placeholder: 'Name of menu' %>
-
-  <br />
-  <hr />
-
-  <div class="d-flex justify-content-between">
-    <h5>
-      Fields
-    </h5>
-    <%= link_to_add_fields "+ Field", form, :content_fields %>
-  </div>
-
-  <%= form.simple_fields_for :content_fields do |f| %>
-    <%= render 'content_types/content_field_fields', f: f %>
-  <% end %>
-
-  <div class="fields"></div>
-
-  <div class="actions d-grid gap-2 col-6 mx-auto">
-    <br />
-    <%= form.submit class: 'btn btn-primary btn-block' %>
-  </div>
-<% end %>
