@@ -1,1 +1,1 @@
-<%= f.input convert_to_snake_case(field.field_name), as: :numeric ,placeholder: field.placeholder%>
+<%= f.input convert_to_snake_case(field.field_name), as: :numeric, label: "#{field.field_name.humanize} #{field.require? ? '*' : ''}" ,placeholder: field.placeholder%>
