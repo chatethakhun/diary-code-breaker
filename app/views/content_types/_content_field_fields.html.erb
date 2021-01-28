@@ -1,9 +1,25 @@
-<div class="nested-fields">
-  <%= f.input :field_type, collection: [['Text','text_field'], ['Checkbox', 'check_box'], ['Number', 'number_field']] %>
-  <%= f.input :field_name %>
-  <%= f.input :placeholder %>
-  <%= f.check_box :require %>
-  <%= f.label :require %>
-  <%= f.input :_destroy, as: :hidden, wrapper: false %>
-  <%= link_to "remove", '#', class: "remove_fields" %>
+<div class="nested-fields mt-3 row gy-2 gx-3 align-items-center">
+    <div class="col">
+      <%= f.input :field_type, collection: [['Text','text_field'], ['Checkbox', 'check_box'], ['Number', 'number_field']], wrapper: false, include_blank: false, label: false %>
+    </div>
+    <div class="col">
+      <%= f.input :field_name, wrapper: false, placeholder: 'Field Name', label: false %>
+    </div>
+    <div class="col">
+      <%= f.input :placeholder, wrapper: false, placeholder: 'Placeholder Text', label: false %>
+    </div>
+    <div class="col">
+      <%= f.check_box :require %>
+      <%= f.label :require %>
+    </div>
+    <div class="col text-end">
+      <%= f.input :_destroy, as: :hidden, wrapper: false %>
+      <%= link_to "remove", '#', class: "remove_fields btn btn-danger" %>
+  </div>
+</div>
+
+
+
+
+
 </div>

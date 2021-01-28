@@ -13,6 +13,7 @@ class ContentTypesController < ApplicationController
   # GET /content_types/new
   def new
     @content_type = ContentType.new
+    @content_type.content_fields.build
   end
 
   # GET /content_types/1/edit
