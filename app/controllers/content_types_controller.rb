@@ -4,7 +4,7 @@ class ContentTypesController < ApplicationController
 
   # GET /content_types
   def index
-    @content_types = ContentType.all
+    @content_types = ContentType.my_contents(current_user)
   end
 
   # GET /content_types/1
