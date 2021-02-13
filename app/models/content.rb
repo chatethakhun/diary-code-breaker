@@ -1,5 +1,7 @@
 class Content < ApplicationRecord
+
   include ApplicationHelper
+
   belongs_to :content_type
 
   serialize :properties, Hash

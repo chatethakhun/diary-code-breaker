@@ -7,13 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarText">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <%- if user_signed_in? %>
-          <%- ContentType.my_contents(current_user).each do |menu| %>
-            <li class="nav-item">
-              <%= link_to menu.name, content_type_path(menu), class: "nav-link" %>
-            </li>
-          <% end %>
-        <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Content
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%- if user_signed_in? %>
+              <%- ContentType.my_contents(current_user).each do |menu| %>
+                <li>
+                  <%= link_to menu.name, content_type_path(menu), class: "dropdown-item" %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Cooking run", cooking_run_coupons_path, class: "nav-link" %>
+        </li>
       </ul>
 
       <%- if user_signed_in? %>
