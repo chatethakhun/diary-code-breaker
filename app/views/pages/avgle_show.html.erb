@@ -1,8 +1,12 @@
 <br />
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <iframe width="100%" height="500" src="https://avgle.com/embed/301ffd77e62b1de6eeb3" frameborder="0" allowfullscreen></iframe>
+    <div class="col-12 text-center">
+      <h1>
+        <%= @av['title'] %>
+      </h1>
+      <br />
+      <iframe width="100%" height="500" src="<%= @av['embedded_url'] %>" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>

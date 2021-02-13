@@ -15,8 +15,10 @@ class PagesController < ApplicationController
     @list_av = response['response']['videos']
   end
 
-  def av_show
+  def avgle_show
+
     vid = params[:vid]
-    @av = HTTParty.get("https://api.avgle.com/v1/videos/#{vid}")['response']['videos']
+    response = HTTParty.get("https://api.avgle.com/v1/video/#{vid}")
+    @av = response['response']['video']
   end
 end
