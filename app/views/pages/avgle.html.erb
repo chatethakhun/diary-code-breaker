@@ -1,6 +1,25 @@
 <br />
 <div class="container">
   <div class="row">
+    <div class="col-12">
+      <br />
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <%- 21.times.each do |number| %>
+            <%- if number == 0 %>
+              <li class="page-item">
+                <%= link_to 'First', avgle_path, class:'page-link'  %>
+              </li>
+            <%- else %>
+              <li class="page-item">
+                <%= link_to number, avgle_path(page: number), class:'page-link'  %>
+              </li>
+            <% end %>
+
+          <% end %>
+        </ul>
+      </nav>
+    </div>
     <div class="col-12 cards">
       <%- @list_av.each do |av| %>
         <div class="card" style="width: 18rem;">
@@ -12,19 +31,6 @@
         </div>
 <!--        <iframe width="530" height="298" src="https://avgle.com/embed/301ffd77e62b1de6eeb3" frameborder="0" allowfullscreen></iframe>-->
     <% end %>
-
-    </div>
-    <div class="col-12">
-      <br />
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
     </div>
   </div>
 </div>
