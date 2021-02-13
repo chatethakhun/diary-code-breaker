@@ -22,11 +22,14 @@ class CouponsController < ApplicationController
   # POST /coupons
   def create
     @coupon = Coupon.new(coupon_params)
-
-    if @coupon.save
-      redirect_to @coupon, notice: 'Coupon was successfully created.'
+    if !Coupon.exists?(name: @coupon.name)
+      if @coupon.save
+        redirect_to new_coupon_path, notice: 'Coupon was successfully created.'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_coupon_path, error: 'Cannot create'
     end
   end
 
@@ -42,7 +45,7 @@ class CouponsController < ApplicationController
   # DELETE /coupons/1
   def destroy
     @coupon.destroy
-    redirect_to coupons_url, notice: 'Coupon was successfully destroyed.'
+    redirect_to cooking_run_coupons_path, notice: 'Coupon was successfully destroyed.'
   end
 
   def claim_coupon

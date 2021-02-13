@@ -6,9 +6,12 @@
         <h2>All Coupons</h2>
         <div class="coupons">
           <%- @coupons.each do |coupon| %>
-            <span class="badge <%= get_badge_class %>">
-              <%= coupon.name %>
-            </span>
+              <span class="badge <%= get_badge_class %>">
+                <%= coupon.name %>
+                <%= link_to coupon, method: :delete, data: { confirm: 'แน่ใจนะ'} do %>
+                  <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                <% end %>
+              </span>
           <% end %>
         </div>
       </div>
