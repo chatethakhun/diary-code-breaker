@@ -7,22 +7,33 @@
     <div class="collapse navbar-collapse" id="navbarText">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%- if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              My Content
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <%- ContentType.my_contents(current_user).each do |menu| %>
+                  <li>
+                    <%= link_to menu.name, content_type_path(menu), class: "dropdown-item" %>
+                  </li>
+                <% end %>
+            </ul>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            My Content
+          <a class="nav-link dropdown-toggle" href="#" id="cookingRun" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cooking run
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%- if user_signed_in? %>
-              <%- ContentType.my_contents(current_user).each do |menu| %>
-                <li>
-                  <%= link_to menu.name, content_type_path(menu), class: "dropdown-item" %>
-                </li>
-              <% end %>
-            <% end %>
+          <ul class="dropdown-menu" aria-labelledby="cookingRun">
+            <li>
+              <%= link_to 'New Coupon', new_coupon_path, class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to 'Claim Coupon', cooking_run_coupons_path, class: "dropdown-item" %>
+            </li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Cooking run", cooking_run_coupons_path, class: "nav-link" %>
         </li>
       </ul>
 
