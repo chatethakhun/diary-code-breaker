@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :coupons do
     collection do
       get :cooking_run, to: 'pages#cooking_run'
+      post :cooking_run, to: 'coupons#claim_coupon'
     end
   end
 

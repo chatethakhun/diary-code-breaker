@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <br/>
+      <div class="bg-container">
+        <h2>All Coupons</h2>
+        <div class="coupons">
+          <%- @coupons.each do |coupon| %>
+            <span class="badge <%= get_badge_class %>">
+              <%= coupon.name %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 m-auto">
+      <br/>
+      <div class="bg-container">
+        <%= simple_form_for :coupon, url: cooking_run_coupons_path do |f| %>
+          <%= f.input :email, placeholder: 'Enter email' %>
+          <br/>
+          <div class="actions d-grid gap-2 col-6 mx-auto">
+            <%= f.submit 'Claim Coupon', class: 'btn btn-primary btn-block' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

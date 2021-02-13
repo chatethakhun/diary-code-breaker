@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
-  def cooking_run
+  def home
 
+  end
+
+  def cooking_run
+    @coupons = Coupon.all
   end
 end

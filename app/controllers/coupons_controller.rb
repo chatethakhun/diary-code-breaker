@@ -45,6 +45,22 @@ class CouponsController < ApplicationController
     redirect_to coupons_url, notice: 'Coupon was successfully destroyed.'
   end
 
+  def claim_coupon
+    email = params[:coupon][:email]
+    @coupons = Coupon.all
+
+    if email.present?
+      @coupons.each do |coupon|
+        HTTParty.post('https://account.devplay.com/v2/coupon/ck', body:  {
+          email: email,
+          coupon_code: coupon.name
+        }.to_json)
+      end
+    end
+
+    redirect_to cooking_run_coupons_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_coupon
