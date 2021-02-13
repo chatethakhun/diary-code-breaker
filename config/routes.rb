@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   get :avgle, to: 'pages#avgle'
+  get '/avgle/:vid', to: 'pages#avgle_show', as: :av_detail
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
