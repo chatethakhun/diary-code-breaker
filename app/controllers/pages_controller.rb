@@ -21,4 +21,15 @@ class PagesController < ApplicationController
     response = HTTParty.get("https://api.avgle.com/v1/video/#{vid}")
     @av = response['response']['video']
   end
+
+  def av_search
+
+    page = params[:page].present? ? params[:page].to_i : 0
+    limit = 40
+    keyword = CGI.escape params[:search][:keyword]
+    response = HTTParty.get("https://api.avgle.com/v1/search/#{keyword}/#{page}?limit=#{limit}")
+
+    @list_av = response['response']['videos']
+
+  end
 end
