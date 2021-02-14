@@ -23,7 +23,7 @@
     <div class="col-12 cards">
       <%- @list_av.each do |av| %>
         <div class="card" style="width: 18rem;">
-          <img src=<%= av['preview_url'] %> class='card-img-top' alt="" style="height: 200px;"/>
+          <img src=<%= av['preview_url'] %> class='card-img-top' alt="" style="height: 200px;" referrerPolicy="no-referrer" />
           <div class="card-body">
             <h5 class="card-title"><%= av['title']%></h5>
             <%= link_to 'Go to View',av_detail_path(vid: av['vid']) , class: 'btn btn-primary' %>
