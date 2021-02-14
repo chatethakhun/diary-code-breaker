@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
 //Page
+@import "pages/av";
+@import "pages/coupon";
 @import "pages/landing_page";
 
 //Component
+@import "components/card";
 @import "components/container";
 @import "components/form";
 @import "components/link";
