@@ -35,9 +35,13 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <%= link_to 'AVGLE', avgle_path, class:'nav-link' %>
-        </li>
+        <%- if user_signed_in? %>
+          <%- if current_user.email == 'chatethakhun.jack@gmail.com' %>
+            <li class="nav-item">
+              <%= link_to 'AVGLE', avgle_path, class:'nav-link' %>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
 
       <%- if user_signed_in? %>
