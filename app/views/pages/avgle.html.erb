@@ -1,25 +1,20 @@
 <br />
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <br />
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <%- 21.times.each do |number| %>
-            <%- if number == 0 %>
-              <li class="page-item">
-                <%= link_to 'First', avgle_path, class:'page-link'  %>
-              </li>
-            <%- else %>
-              <li class="page-item">
-                <%= link_to number, avgle_path(page: number), class:'page-link'  %>
-              </li>
-            <% end %>
-
+    <div class="col-12  mb-3">
+      <div class="row">
+        <div class="col-6">
+          <%- if params[:page].present? &&  params[:page].to_i > 0%>
+            <%= link_to 'Previous Page', avgle_path(page: params[:page].to_i - 1), class: 'btn btn-primary' %>
           <% end %>
-        </ul>
-      </nav>
+        </div>
+        <div class="col-6 text-end">
+          <%= link_to 'Next Page', avgle_path(page: params[:page].present? ? params[:page].to_i + 1 : 1), class: 'btn btn-primary' %>
+        </div>
+      </div>
+
     </div>
+
     <div class="col-12 cards">
       <%- @list_av.each do |av| %>
         <div class="card">

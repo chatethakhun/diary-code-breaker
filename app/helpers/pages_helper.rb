@@ -9,6 +9,6 @@ module PagesHelper
     hours = total_seconds / (60 * 60)
     minutes = (total_seconds / 60) % 60
 
-    "#{hours > 0 ? "#{hours} h" : ""} #{ minutes > 0 ? "#{minutes} m" : "" }"
+    "#{hours > 0 ? "#{hours} h" : ""} #{ minutes > 0 ? "#{minutes} m" : "" } m"
   end
 end
