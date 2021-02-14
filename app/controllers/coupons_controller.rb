@@ -24,12 +24,12 @@ class CouponsController < ApplicationController
     @coupon = Coupon.new(coupon_params)
     if !Coupon.exists?(name: @coupon.name)
       if @coupon.save
-        redirect_to new_coupon_path, notice: 'Coupon was successfully created.'
+        redirect_to new_coupon_path, notice: 'สร้างคูปองสำเร็จ'
       else
         render :new
       end
     else
-      redirect_to new_coupon_path, error: 'Cannot create'
+      redirect_to new_coupon_path, flash: { warning: 'มีคูปองแล้ว'}
     end
   end
 
@@ -45,7 +45,7 @@ class CouponsController < ApplicationController
   # DELETE /coupons/1
   def destroy
     @coupon.destroy
-    redirect_to cooking_run_coupons_path, notice: 'Coupon was successfully destroyed.'
+    redirect_to cooking_run_coupons_path, notice: 'ลบคูปองเรียบร้อย'
   end
 
   def claim_coupon
