@@ -59,9 +59,13 @@ class CouponsController < ApplicationController
           coupon_code: coupon.name
         }.to_json)
       end
+
+      redirect_to cooking_run_coupons_path, notice: 'รับคูปองเรียบร้อย'
+    else
+      redirect_to cooking_run_coupons_path, :flash => { warning: "โปรดกรอกอีเมล์" }
     end
 
-    redirect_to cooking_run_coupons_path
+
   end
 
   private

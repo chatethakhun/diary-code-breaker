@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Prompt&display=swap');
 @import "variables";
 
 //Page
@@ -12,9 +12,10 @@
 @import "components/form";
 @import "components/link";
 @import "components/nav";
+@import "components/toast";
 
 * {
-  font-family: 'Yusei Magic', sans-serif;
+  font-family: 'Yusei Magic', 'Prompt', sans-serif;
 }
 
 body {
