@@ -1,0 +1,25 @@
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 4" id="back-to-top">
+  <button class="btn btn-primary" style="display: none">Back to top</button>
+</div>
+
+<script>
+  $(document).on('turbolinks:load', function () {
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 600) {
+        $("#back-to-top button").fadeIn(500)
+      } else {
+        $("#back-to-top button").fadeOut(500);
+      }
+    });
+
+
+    $("#back-to-top button").click(function(){
+
+      $('html, body').animate({
+        scrollTop : 0}
+        ,500
+      );
+      return false;
+    });
+  })
+</script>
