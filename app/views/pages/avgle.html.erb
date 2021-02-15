@@ -33,16 +33,22 @@
         <div class="list-av-container">
           <ul class="sidebar">
             <h5 class="ml-2">Category</h5>
-            <li>
-              <%= link_to 'All', avgle_path %>
-            </li>
-            <li>
-              <%= link_to 'Watch Lated', avgle_path(category: 'watch_lated') %>
-            </li>
-            <%- @categories.each do |category| %>
+            <%= link_to avgle_path do %>
               <li>
-                <%= link_to category['name'], avgle_path(category:category['CHID'] ) %>
+                All
               </li>
+            <% end  %>
+            <%= link_to avgle_path(category: 'watch_lated') do %>
+              <li>
+                Watch Lated
+              </li>
+            <% end %>
+            <%- @categories.each do |category| %>
+              <%= link_to  avgle_path(category:category['CHID'] )  do %>
+                <li>
+                  <%= category['name']%>
+                </li>
+              <% end %>
             <% end %>
           </ul>
             <%- if @list_av.length > 0 %>
