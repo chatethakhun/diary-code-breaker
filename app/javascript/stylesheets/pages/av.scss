@@ -4,6 +4,6 @@
   grid-column-gap: 1rem;
 
   @media screen and (min-width: $tablet) {
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 1fr 5fr;
   }
 }
