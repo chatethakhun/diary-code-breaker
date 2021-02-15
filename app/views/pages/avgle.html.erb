@@ -21,7 +21,9 @@
               <% end %>
             </div>
             <div class="col-3 col-md-3 text-end">
-              <%= link_to 'ถัดไป', avgle_path(category: params[:category], page: params[:page].present? ? params[:page].to_i + 1 : 1), class: 'btn btn-primary' %>
+              <%- if @list_av.length == @limit %>
+                <%= link_to 'ถัดไป', avgle_path(category: params[:category], page: params[:page].present? ? params[:page].to_i + 1 : 1), class: 'btn btn-primary' %>
+              <% end %>
             </div>
           </div>
         </div>
