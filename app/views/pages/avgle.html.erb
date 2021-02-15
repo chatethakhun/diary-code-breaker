@@ -35,6 +35,9 @@
           <div class="col-12 col-md-2">
             <ul class="sidebar">
               <h5 class="ml-2">Category</h5>
+              <li>
+                <%= link_to 'All', avgle_path %>
+              </li>
               <%- @categories.each do |category| %>
                 <li>
                   <%= link_to category['name'], avgle_path(category:category['CHID'] ) %>
