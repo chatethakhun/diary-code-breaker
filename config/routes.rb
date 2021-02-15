@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   end
 
   resources :content_types do
-    resources :contents
+    resources :contents\
   end
 
   get :avgle, to: 'pages#avgle'
   get '/avgle/:vid', to: 'pages#avgle_show', as: :av_detail
-  post '/avgle/search', to: 'pages#av_search', as: :av_search
+  get '/avgle_search', to: 'pages#av_search', as: :av_search
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
