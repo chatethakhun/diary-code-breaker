@@ -12,7 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :content_types do
-    resources :contents\
+    resources :contents
+  end
+
+  resources :avgle_movies do
+    collection do
+      post 'watch_lated/:vid', to: 'avgle_movies#watch_lated', as: :av_watch_lated
+    end
   end
 
   get :avgle, to: 'pages#avgle'

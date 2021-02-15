@@ -11,10 +11,13 @@ class PagesController < ApplicationController
     page = params[:page].present? ? params[:page].to_i : 0
     limit = 40
     @category = params[:category]
-    response = HTTParty.get("https://api.avgle.com/v1/videos/#{page}?limit=#{limit}&c=#{@category}")
     @categories = HTTParty.get('https://api.avgle.com/v1/categories')['response']['categories']
-    @tatal_pag_tab = response['response']['total_videos'] / limit
-    @list_av = response['response']['videos']
+    if @category != 'watch_lated'
+      response = HTTParty.get("https://api.avgle.com/v1/videos/#{page}?limit=#{limit}&c=#{@category}")
+      @list_av = response['response']['videos']
+    else
+      @list_av = AvgleMovie.all
+    end
   end
 
   def avgle_show

@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_145426) do
+ActiveRecord::Schema.define(version: 2021_02_15_081335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avgle_movies", force: :cascade do |t|
+    t.string "vid"
+    t.string "title"
+    t.float "duration"
+    t.boolean "hd"
+    t.integer "viewnumber"
+    t.integer "likes"
+    t.integer "dislikes"
+    t.string "video_url"
+    t.string "embedded_url"
+    t.string "preview_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "framerate"
+  end
 
   create_table "content_fields", force: :cascade do |t|
     t.string "field_name"

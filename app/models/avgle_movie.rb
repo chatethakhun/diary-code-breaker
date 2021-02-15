@@ -1,0 +1,2 @@
+class AvgleMovie < ApplicationRecord
+end
