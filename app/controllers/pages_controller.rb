@@ -23,14 +23,15 @@ class PagesController < ApplicationController
   end
 
   def av_search
+    @limit = 40
+    page = params[:page].present? ? params[:page].to_i : 0
+
     if params[:keyword].present?
-      page = params[:page].present? ? params[:page].to_i : 0
-      @limit = 40
       keyword = CGI.escape params[:keyword] || ''
       response = HTTParty.get("https://api.avgle.com/v1/search/#{keyword}/#{page}?limit=#{@limit}")
       @list_av = response['response']['videos']
     else
-      @list_av = []
+      redirect_to avgle_path
     end
   end
 end
