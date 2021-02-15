@@ -23,8 +23,8 @@
       </div>
 
     </div>
-
-    <div class="col-12 cards">
+    <%- if @list_av.length > 0 %>
+      <div class="col-12 cards">
       <%- @list_av.each do |av| %>
         <div class="card">
           <img src=<%= av['preview_url'] %> class='card-img-top' alt="" style="height: 200px;" referrerPolicy="no-referrer" />
@@ -102,5 +102,10 @@
         </div>
     <% end %>
     </div>
+    <%- else %>
+      <div class="col-12">
+        ไม่เจอ
+      </div>
+    <% end %>
   </div>
 </div>
