@@ -3,7 +3,9 @@ class CouponsController < ApplicationController
 
   # GET /coupons
   def index
+
     @coupons = Coupon.all
+    respond_to :html, :json, :xml
   end
 
   # GET /coupons/1

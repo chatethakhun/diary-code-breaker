@@ -91,6 +91,8 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.11.2)
+      activesupport (>= 5.0.0)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -228,6 +230,7 @@ DEPENDENCIES
   cocoon
   devise
   httparty
+  jbuilder
   listen (~> 3.2)
   pg
   puma (~> 4.1)

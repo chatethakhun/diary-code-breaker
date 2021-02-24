@@ -23,6 +23,8 @@ gem "cocoon"
 
 gem 'devise'
 
+gem 'jbuilder'
+
 gem 'httparty'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
