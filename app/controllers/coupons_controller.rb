@@ -51,27 +51,30 @@ class CouponsController < ApplicationController
   # DELETE /coupons/1
   def destroy
     @coupon.destroy
-    redirect_to cooking_run_coupons_path, notice: 'ลบคูปองเรียบร้อย'
+    respond_to do |format|
+      format.html { redirect_to cooking_run_coupons_path, notice: 'ลบคูปองเรียบร้อย' }
+      format.json { render json: { status: true, message: 'ลบคูปองเรียบร้อย'}}
+    end
   end
 
   def claim_coupon
     email = params[:coupon][:email]
     @coupons = Coupon.all
-
-    if email.present?
-      @coupons.each do |coupon|
-        HTTParty.post('https://account.devplay.com/v2/coupon/ck', body:  {
-          email: email,
-          coupon_code: coupon.name
-        }.to_json)
+    respond_to do |format|
+      if email.present?
+        @coupons.each do |coupon|
+          HTTParty.post('https://account.devplay.com/v2/coupon/ck', body:  {
+            email: email,
+            coupon_code: coupon.name
+          }.to_json)
+        end
+        format.html { redirect_to cooking_run_coupons_path, notice: 'รับคูปองเรียบร้อย' }
+        format.json { render json: { status: true, message: 'รับคูปองเรียบร้อย' }}
+      else
+        format.html {  redirect_to cooking_run_coupons_path, :flash => { warning: "โปรดกรอกอีเมล์" } }
+        format.json { render json: { status: false, message: 'โปรดกรอกอีเมล์'}}
       end
-
-      redirect_to cooking_run_coupons_path, notice: 'รับคูปองเรียบร้อย'
-    else
-      redirect_to cooking_run_coupons_path, :flash => { warning: "โปรดกรอกอีเมล์" }
     end
-
-
   end
 
   private
