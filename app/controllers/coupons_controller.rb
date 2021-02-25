@@ -3,9 +3,7 @@ class CouponsController < ApplicationController
 
   # GET /coupons
   def index
-
     @coupons = Coupon.all
-    respond_to :html, :json, :xml
   end
 
   # GET /coupons/1
@@ -24,15 +22,21 @@ class CouponsController < ApplicationController
   # POST /coupons
   def create
     @coupon = Coupon.new(coupon_params)
-    if !Coupon.exists?(name: @coupon.name)
-      if @coupon.save
-        redirect_to new_coupon_path, notice: 'สร้างคูปองสำเร็จ'
+    respond_to do |format|
+      if !Coupon.exists?(name: @coupon.name)
+        if @coupon.save
+          format.html { redirect_to new_coupon_path, notice: 'สร้างคูปองสำเร็จ' }
+          format.json { render json: { coupon: @coupon , status: true} }
+        else
+          format.html { render :new }
+          format.json { render json: {status: false , message: @coupon.errors.full_messages.join('and')} }
+        end
       else
-        render :new
+        format.html { redirect_to new_coupon_path, flash: { warning: 'มีคูปองแล้ว'} }
+        format.json { render json: { status: false, message: 'มีคูปองแล้ว'} }
       end
-    else
-      redirect_to new_coupon_path, flash: { warning: 'มีคูปองแล้ว'}
     end
+
   end
 
   # PATCH/PUT /coupons/1
