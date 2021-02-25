@@ -29,11 +29,11 @@ class CouponsController < ApplicationController
           format.json { render json: { coupon: @coupon , status: true} }
         else
           format.html { render :new }
-          format.json { render json: {status: false , message: @coupon.errors.full_messages.join('and')} }
+          format.json { render json: {status: false , message: @coupon.errors.full_messages.join(' and ')}, status: 400 }
         end
       else
         format.html { redirect_to new_coupon_path, flash: { warning: 'มีคูปองแล้ว'} }
-        format.json { render json: { status: false, message: 'มีคูปองแล้ว'} }
+        format.json { render json: { status: false, message: 'มีคูปองแล้ว'}, status: 400 }
       end
     end
 
@@ -72,7 +72,7 @@ class CouponsController < ApplicationController
         format.json { render json: { status: true, message: 'รับคูปองเรียบร้อย' }}
       else
         format.html {  redirect_to cooking_run_coupons_path, :flash => { warning: "โปรดกรอกอีเมล์" } }
-        format.json { render json: { status: false, message: 'โปรดกรอกอีเมล์'}}
+        format.json { render json: { status: false, message: 'โปรดกรอกอีเมล์'}, status: 400}
       end
     end
   end
