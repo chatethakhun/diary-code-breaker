@@ -42,6 +42,12 @@
               <%= link_to 'AVGLE', avgle_path, class:'nav-link' %>
             </li>
           <% end %>
+
+          <%- if current_user.admin %>
+            <li class="nav-item">
+              <%= link_to 'รายจ่าย', expenses_path, class:'nav-link' %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
 

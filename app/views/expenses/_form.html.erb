@@ -1,16 +1,20 @@
 
-<%= simple_form_for(@expense) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for(@expense, url: expenses_path(type: params[:type])) do |f| %>
 
-  <div class="form-inputs">
+  <%- if params[:type] == 'income' || @type == 'income' %>
     <%= f.input :income %>
-    <%= f.input :income_note %>
+    <%= f.hidden_field :outcome, value: 0 %>
+  <%- elsif params[:type] == 'outcome' || @type == 'outcome'  %>
     <%= f.input :outcome %>
-    <%= f.input :outcome_note %>
-  </div>
+    <%= f.hidden_field :income, value: 0 %>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <%= f.input :note %>
+
+
+
+  <br>
+  <div class="form-actions text-center">
+    <%= f.button :submit, class: 'btn btn-primary' %>
   </div>
 <% end %>
