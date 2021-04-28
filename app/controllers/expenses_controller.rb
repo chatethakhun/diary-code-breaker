@@ -3,7 +3,13 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = Expense.all
+    if params[:filter].present?
+      date = "01/#{params[:filter][:date]}/#{Date.today.year}"
+      @expenses = Expense.where(created_at: date.to_time.beginning_of_month..date.to_time.end_of_month)
+    else
+      @expenses = Expense.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)
+    end
+
   end
 
   # GET /expenses/1 or /expenses/1.json

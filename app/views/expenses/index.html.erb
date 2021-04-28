@@ -18,9 +18,21 @@
   </div>
 
   <br>
-
   <div class="row">
-    <div class="col-6 m-auto">
+    <div class="col-12 col-md-6 m-auto">
+      <%= form_for(:filter, url: expenses_path, method: :get)  do |f|%>
+        <%= f.label :date, 'Month' %>
+        <%= f.select :date,  Date::MONTHNAMES.compact.zip(1.upto(12)).to_h, selected: params[:filter].present? ? params[:filter][:date] :  Date.today.month %>
+        <%= f.submit 'Search',class: 'btn btn-primary' %>
+
+        <%= link_to 'Reset', expenses_path, class: 'btn btn-outline-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-12 col-md-6 m-auto">
       <table class="table">
         <thead>
           <tr>
