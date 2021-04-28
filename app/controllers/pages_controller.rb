@@ -3,6 +3,16 @@ class PagesController < ApplicationController
 
   end
 
+  def manage_users
+          @users = User.all
+  end
+
+  def update_role_user
+            if current_user.update_attribute(:admin, !current_user.admin)
+                      redirect_to manage_users_path, notice: 'Update successfully'
+            end
+  end
+
   def cooking_run
     @coupons = Coupon.all
   end

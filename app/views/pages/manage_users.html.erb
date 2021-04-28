@@ -1,0 +1,23 @@
+<br>
+
+<div class="container bg-container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <ul class="list-group">
+          <%- @users.each do |user| %>
+            <li class="list-group-item">
+              <%= "#{user.email}" %>
+                <%- if user.admin %>
+                  <span class="badge bg-info">Admin</span>
+                <% end %>
+              <div style="float: right;" >
+                <%= link_to 'Switch role', update_role_user_path, method: :put, class: 'btn btn-sm btn-info float-right' %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -35,6 +35,7 @@
             </li>
           </ul>
         </li>
+
         <%- if user_signed_in? %>
           <%- if current_user.email == 'chatethakhun.jack@gmail.com' %>
             <li class="nav-item">
@@ -47,6 +48,9 @@
       <%- if user_signed_in? %>
         <div class="gx-3 gy-3">
           <%= link_to 'Manage Menu', content_types_path, class: 'btn btn-outline-secondary'  %>
+          <%- if current_user.admin %>
+            <%= link_to 'Manage User', manage_users_path, class: 'btn btn-outline-secondary'  %>
+          <% end %>
           <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'  %>
         </div>
       <%- else %>

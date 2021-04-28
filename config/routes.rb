@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :expenses
   devise_for :users, controllers: {
     sessions: 'sessions/sessions'
   }
@@ -24,6 +25,9 @@ Rails.application.routes.draw do
   get :avgle, to: 'pages#avgle'
   get '/avgle/:vid', to: 'pages#avgle_show', as: :av_detail
   get '/avgle_search', to: 'pages#av_search', as: :av_search
+
+  get :manage_users, to: 'pages#manage_users'
+  put :update_role_user, to: 'pages#update_role_user'
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
