@@ -5,14 +5,22 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @registration = Register.new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @registration = Register.new(registration_params)
+
+    if @registration.valid?
+      super
+    else
+       render :new
+    end
+
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +67,10 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+
+  def registration_params
+    params.require(:register).permit(:email, :password, :password_confirmation)
+  end
+
 end

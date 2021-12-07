@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :expenses
   devise_for :users, controllers: {
-    sessions: 'sessions/sessions'
+    sessions: 'sessions/sessions',
+    registrations: 'sessions/registrations'
   }
 
   resources :coupons do

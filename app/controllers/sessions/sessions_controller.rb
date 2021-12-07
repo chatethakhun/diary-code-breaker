@@ -4,14 +4,22 @@ class Sessions::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    @login = Login.new
+
+    super
+  end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @login = Login.new(login_params)
+
+    if @login.valid?
+      super
+    else
+      render :new
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -32,5 +40,12 @@ class Sessions::SessionsController < Devise::SessionsController
       content_type_path(resource.content_types.first)
     end
 
+  end
+
+
+  private
+
+  def login_params
+    params.require(:login).permit(:email, :password)
   end
 end
