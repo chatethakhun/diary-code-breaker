@@ -6,15 +6,15 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @registration = Register.new
+    @user = User.new
     super
   end
 
   # POST /resource
   def create
-    @registration = Register.new(registration_params)
+    @user = User.new(registration_params)
 
-    if @registration.valid?
+    if @user.valid?(:register)
       super
     else
        render :new
@@ -70,7 +70,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   private
 
   def registration_params
-    params.require(:register).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 end

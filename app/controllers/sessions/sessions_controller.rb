@@ -5,16 +5,14 @@ class Sessions::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    @login = Login.new
-
+    @user = User.new
     super
   end
 
   # POST /resource/sign_in
   def create
-    @login = Login.new(login_params)
-
-    if @login.valid?
+    @user = User.new(login_params)
+    if @user.valid?(:login)
       super
     else
       render :new
@@ -42,10 +40,7 @@ class Sessions::SessionsController < Devise::SessionsController
 
   end
 
-
-  private
-
   def login_params
-    params.require(:login).permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end
