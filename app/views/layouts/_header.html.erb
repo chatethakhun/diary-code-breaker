@@ -53,6 +53,7 @@
 
       <%- if user_signed_in? %>
         <div class="gx-3 gy-3">
+          <%= link_to 'Chat Rooms', rooms_path , class: 'btn btn-outline-secondary'  %>
           <%= link_to 'Manage Menu', content_types_path, class: 'btn btn-outline-secondary'  %>
           <%- if current_user.admin %>
             <%= link_to 'Manage User', manage_users_path, class: 'btn btn-outline-secondary'  %>

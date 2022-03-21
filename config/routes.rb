@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  resources :rooms
   resources :expenses
   devise_for :users, controllers: {
     sessions: 'sessions/sessions',
