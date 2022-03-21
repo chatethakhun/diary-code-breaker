@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<div id="user-id" data-user-id="<%= current_user.id %>"></div>
+<div class="bg-container mx-3 chat-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <h1>Rooms</h1>
+        <%= render 'form', room: Room.new %>
+        <br>
+        <ul class="sidebar">
+          <%- @rooms.each do |room| %>
+            <li>
+              <%= link_to room.name, room %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-9 position-relative">
+        <%- if @room.present? %>
+          <div id="room-id" data-room-id="<%= @room.id %>"></div>
+        <br>
+          <div class="chat-rooms">
+            <h1>
+              <%= @room.name %>
+            </h1>
+            <div class="chat-content">
+              <div class="chat-messages">
+                <%- @room.messages.each do |message| %>
+                  <%= render 'messages/message',
+                             message: message %>
+                <%- end %>
+              </div>
+              <div class="chat-box">
+                <div class="message-input">
+                  <%= render 'messages/form', message: Message.new, room: @room %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
