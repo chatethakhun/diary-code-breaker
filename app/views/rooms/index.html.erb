@@ -17,6 +17,11 @@
             </li>
           <% end %>
         </ul>
+        <%- if @rooms.empty? %>
+          <small class="text-hint text-center">
+            No Rooms
+          </small>
+        <% end %>
       </div>
       <div class="col-9 position-relative">
         <%- if @room.present? %>
