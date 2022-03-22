@@ -9,8 +9,11 @@
         <br>
         <ul class="sidebar">
           <%- @rooms.each do |room| %>
-            <li>
+            <li class="d-flex justify-content-between">
               <%= link_to room.name, room %>
+              <%= link_to room, method: :delete, data: { confirm: 'Are you sure?'} do %>
+                <i class="lni lni-trash-can"></i>
+              <% end %>
             </li>
           <% end %>
         </ul>
